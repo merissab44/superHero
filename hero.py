@@ -1,3 +1,4 @@
+import random
 class Hero:
     # We want out hero to have a default "starting health"
     # we set that in the finction header
@@ -8,7 +9,11 @@ class Hero:
         # us the same as their starting health
         self.current_health = starting_health
 
+    def fight(self, opponent):
+        hero_choice = [self.name, opponent.name]
+        print(f"{random.choice(hero_choice)} won!")
 if __name__ == "__main__":
-    my_hero = Hero("Grace Hopper", 200)
-    print(my_hero.name)
-    print(my_hero.current_health)
+  hero1 = Hero("Wonder Woman")
+  hero2 = Hero("Dumbeldore")
+
+  print(hero1.fight(hero2))
