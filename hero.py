@@ -33,15 +33,15 @@ class Hero:
         self.armors.append(armor)
 
     def defend(self, damage_amt):
-        damage_amt = self.attack()
         total_block = 0
         block = 0
         for armor in self.armors:
             # adds the "strength" of the armor to get the total block
+            print(f"name: {armor.name}")
             block += armor.block()
-            return block
-        print(damage_amt)
-        print(block)
+            # return block
+        print(f" damage amount: {damage_amt}")
+        # print(block)
         total_block = damage_amt - block
         print(f"Your total block is {total_block}")
         return total_block
@@ -63,9 +63,14 @@ class Hero:
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
-
+    armor = Armor("Shield", 5000)
+    armor2 = Armor("sword", 3000)
+    armor3 = Armor("laser", 2300)
     hero = Hero("Grace Hopper", 200)
     hero.take_damage(150)
+    hero.add_armor(armor)
+    hero.add_armor(armor2)
+    hero.add_armor(armor3)
     print(hero.is_alive())
-    hero.take_damage(15000)
+    hero.take_damage(200)
     print(hero.is_alive())
