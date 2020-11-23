@@ -1,6 +1,7 @@
 import random
 from ability import Ability
 from armor import Armor
+from weapon import Weapon
 class Hero:
     # We want out hero to have a default "starting health"
     # we set that in the finction header
@@ -20,6 +21,8 @@ class Hero:
     def add_ability(self, ability):
         self.abilities.append(ability)
 
+    def add_weapon(self, weapon):
+        self.abilities.append(weapon)
     def attack(self):
         total_damage = 0
         for ability in self.abilities:
@@ -81,14 +84,19 @@ class Hero:
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
-    hero1 = Hero("Wonder Woman")
-    hero2 = Hero("Dumbledore")
-    ability1 = Ability("Super Speed", 300)
-    # ability2 = Ability("Super Eyes", 130)
-    ability3 = Ability("Wizard Wand", 80)
-    # ability4 = Ability("Wizard Beard", 20)
-    hero1.add_ability(ability1)
-    # hero1.add_ability(ability2)
-    hero2.add_ability(ability3)
-    # hero2.add_ability(ability4)
-    print(hero1.fight(hero2))
+    # hero1 = Hero("Wonder Woman")
+    # hero2 = Hero("Dumbledore")
+    # weapon1 = Weapon("Super Speed", 300)
+    # # ability2 = Ability("Super Eyes", 130)
+    # ability3 = Ability("Wizard Wand", 80)
+    # # ability4 = Ability("Wizard Beard", 20)
+    # hero1.add_weapon(weapon1)
+    # # hero1.add_ability(ability2)
+    # hero2.add_ability(ability3)
+    # # hero2.add_ability(ability4)
+    # print(hero1.fight(hero2))
+
+    hero = Hero("Wonder Woman")
+    weapon = Weapon("Lasso of Truth", 90)
+    hero.add_weapon(weapon)
+    print(hero.attack())
