@@ -34,43 +34,61 @@ class Hero:
 
     def defend(self, damage_amt):
         total_block = 0
-        block = 0
         for armor in self.armors:
-            # adds the "strength" of the armor to get the total block
-            print(f"name: {armor.name}")
-            block += armor.block()
-            # return block
-        print(f" damage amount: {damage_amt}")
-        # print(block)
-        total_block = damage_amt - block
-        print(f"Your total block is {total_block}")
-        return total_block
+            if self.armors == 0:
+                print("There is no armor")
+            else:
+                # adds the "strength" of the armor to get the total block
+                print(f"name: {armor.name}")
+                total_block += armor.block()
+            print(f" damage amount: {damage_amt}")
+            print(f"Your total block is {total_block}")
+        return damage_amt - total_block
     def take_damage(self, damage):
         self.current_health -= self.defend(damage)
         print(f"Your current health is now {self.current_health}")
         return self.current_health
     def is_alive(self):
         if self.current_health <= 0:
-            print(" hero has fallen over ")
             return False
         else:
             return True
 
     def fight(self, opponent):
-        hero_choice = [self.name, opponent.name]
-        print(f"{random.choice(hero_choice)} won!")
+        if len(self.abilities) <= 0 or len(opponent.abilities) <= 0:
+            print ('Draw')
+        else:
+            while self.current_health > 0 and opponent.current_health > 0:
+                opponent_dmg = opponent.attack()
+                self_dmg = self.attack()
+                opponent.take_damage(self_dmg)
+                print(opponent.is_alive())
+                self.take_damage(opponent_dmg)
+                print(self.is_alive())
+                if self.is_alive() == False:
+                    print(f"{opponent.name} has won!")
+                elif opponent.is_alive() == False:
+                    print(f"{self.name} has won!")
+                else:
+                    print("It's a tie!")
+    #    hero_choice = [self, opponent]
+        #    for hero in hero_choice:
+        #        hero.attack()
+        #        self.take_damage(opponent.attack())
+        #        hero.defend(opponent.attack())
+
 
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
-    armor = Armor("Shield", 5000)
-    armor2 = Armor("sword", 3000)
-    armor3 = Armor("laser", 2300)
-    hero = Hero("Grace Hopper", 200)
-    hero.take_damage(150)
-    hero.add_armor(armor)
-    hero.add_armor(armor2)
-    hero.add_armor(armor3)
-    print(hero.is_alive())
-    hero.take_damage(200)
-    print(hero.is_alive())
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    # ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    # ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    # hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    # hero2.add_ability(ability4)
+    print(hero1.fight(hero2))
