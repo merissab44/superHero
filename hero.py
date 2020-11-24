@@ -31,24 +31,26 @@ class Hero:
             # add the damage of the attack to get the total damage
             total_damage += ability.attack()
             print(f" the total damage was: {total_damage}")
-            return total_damage
+        return total_damage
     def add_armor(self, armor):
         # adding each armor to the list self.armors
         self.armors.append(armor)
 
     def defend(self):
         total_block = 0
+        if len(self.armors) == 0:
+            print('Theres no armor')
+            return 0
         for armor in self.armors:
-            if self.armors == 0:
-                print("There is no armor")
-            else:
-                # adds the "strength" of the armor to get the total block
-                print(f"name: {armor.name}")
-                total_block += armor.block()
-            print(f"Your total block is {total_block}")
+            # adds the "strength" of the armor to get the total block
+            print(f"name: {armor.name}")
+            total_block += armor.block()
+        print(f"Your total block is {total_block}")
         return total_block
     def take_damage(self, damage):
-        self.current_health -= self.defend()
+        print(damage)
+        print(self.defend())
+        self.current_health -= damage + self.defend()
         print(f"Your current health is now {self.current_health}")
         return self.current_health
     def is_alive(self):
@@ -63,7 +65,6 @@ class Hero:
     def add_death(self, num_deaths):
         self.deaths += num_deaths
     def fight(self, opponent):
-    # hero_choice = [self, opponent]
         #Check to see if hero has abilities, if no abilities, print draw
         if len(self.abilities) > 0 or len(opponent.abilities) > 0:
             while(self.is_alive() and opponent.is_alive()):
@@ -74,16 +75,17 @@ class Hero:
                 print(f'{self.name} attacked {opponent.name}!')
                 opponent.take_damage(self.attack())
                 print(f"{opponent.name}'s remaining health: {opponent.current_health}")
-            if self.is_alive() == False:
-                opponent.add_kill(1)
-                self.add_death(1)
-                return (f"{self.name} has been defeated by {opponent.name}")
-            elif opponent.is_alive() == False:
-                opponent.add_death(1)
-                self.add_kill(1)
-                return (f"{opponent.name} has been defeated by {self.name}")
+                if self.is_alive() == False:
+                    opponent.add_kill(1)
+                    self.add_death(1)
+                    return (f"{self.name} has been defeated by {opponent.name}")
+                elif opponent.is_alive() == False:
+                    opponent.add_death(1)
+                    self.add_kill(1)
+                    return (f"{opponent.name} has been defeated by {self.name}")
         else:
             print("Draw!")
+            
         #print(f'{random.choice(hero_choice)} wins!')
     # def fight(self, opponent):
     #     if len(self.abilities) <= 0 or len(opponent.abilities) <= 0:
@@ -122,7 +124,7 @@ if __name__ == "__main__":
     # ability4 = Ability("Wizard Beard", 20)
     hero1.add_weapon(weapon1)
     # hero1.add_ability(ability2)
-    hero2.add_ability(ability3)
+    # hero2.add_ability(ability3)
     # hero2.add_ability(ability4)
     print(hero1.fight(hero2))
 

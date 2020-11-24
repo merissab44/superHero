@@ -44,19 +44,14 @@ class Arena:
         while add_item != "4":
            add_item = input("[1] Add ability\n[2] Add weapon\n[3] Add armor\n[4] Done adding items\n\nYour choice: ")
            if add_item == "1":
-               #TODO add an ability to the hero
-               self.create_ability()
-               hero.add_ability(self.create_ability)
+               hero.add_ability(self.create_ability())
                #HINT: First create the ability, then add it to the hero
            elif add_item == "2":
-               #TODO add a weapon to the hero
-               self.create_weapon()
-               hero.add_weapon(self.create_weapon)
+
+               hero.add_weapon(self.create_weapon())
                #HINT: First create the weapon, then add it to the hero
            elif add_item == "3":
-               #TODO add an armor to the hero
-               self.create_armor()
-               hero.add_armor(self.create_armor)
+               hero.add_armor(self.create_armor())
                #HINT: First create the armor, then add it to the hero
         return hero
     def build_team_one(self):
@@ -84,10 +79,10 @@ class Arena:
 
     def team_battle(self):
         self.team_one.attack(self.team_two)
-        if self.team_one == 0:
-            print(f"{self.team_two.name} has won the battle!")
-        elif self.team_two == 0:
-            print(f"{self.team_one.name} has won the battle!")
+        # if self.team_one == 0:
+        #     print(f"{self.team_two.name} has won the battle!")
+        # elif self.team_two == 0:
+        #     print(f"{self.team_one.name} has won the battle!")
 
     def show_stats(self):
         print("\n")

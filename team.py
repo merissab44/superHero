@@ -44,16 +44,20 @@ class Team:
             hero1.fight(hero2)
 
             if hero1.is_alive() == False:
-                hero1.name.remove(hero1)
+                self.remove_hero(hero1)
             elif hero2.is_alive() == False:
-                hero2.name.remove(hero2)
-
+                other_team.remove_hero(hero2)
+            else:
+                self.remove_hero(hero1)
+                other_team.remove_hero(hero2)
     def revive_heroes(self, health = 100):
         for hero in self.heroes:
             hero.current_health = hero.starting_health
 
     def stats(self):
         for hero in self.heroes:
+            if hero.deaths == 0:
+                hero.deaths = 1
             kd = hero.kills/hero.deaths 
             print(f"{hero.name} Kill/ Deaths: {kd}")
 
