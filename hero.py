@@ -67,14 +67,12 @@ class Hero:
         #Check to see if hero has abilities, if no abilities, print draw
         if len(self.abilities) > 0 or len(opponent.abilities) > 0:
             while(self.is_alive() and opponent.is_alive()):
-                opponent_dmg = opponent.attack()
-                self_dmg = self.attack()
                 #Start fighting loop until a hero has won
                 print(f'{opponent.name} attacked {self.name}!')
-                self.take_damage(opponent_dmg)
+                self.take_damage(opponent.attack())
                 print(f"{self.name}'s remaining health: {self.current_health}")
                 print(f'{self.name} attacked {opponent.name}!')
-                opponent.take_damage(self_dmg)
+                opponent.take_damage(self.attack())
                 print(f"{opponent.name}'s remaining health: {opponent.current_health}")
             if self.is_alive() == False:
                 opponent.add_kill(1)

@@ -58,19 +58,19 @@ class Team:
             print(f"{hero.name} Kill/ Deaths: {kd}")
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    avengers = Team("Avengers")
-    dc = Team("DC")
+#     avengers = Team("Avengers")
+#     dc = Team("DC")
 
-    avengers.add_hero("Spider Man")
-    avengers.add_hero("Iron Man")
+#     avengers.add_hero("Spider Man")
+#     avengers.add_hero("Iron Man")
 
-    dc.add_hero("Scorpion")
-    dc.add_hero("Sub Zero")
+#     dc.add_hero("Scorpion")
+#     dc.add_hero("Sub Zero")
 
-    dc.view_all_heroes()
-    avengers.living_heroes = ["Iron Man", "Captain America", "Hulk", "Black Panther"]
-    dc.living_opponents = ["Scorpion", "Jack", "Athena", "Sub Zero"]
+#     dc.view_all_heroes()
+#     avengers.living_heroes = ["Iron Man", "Captain America", "Hulk", "Black Panther"]
+#     dc.living_opponents = ["Scorpion", "Jack", "Athena", "Sub Zero"]
 
-    print(avengers.attack(dc))
+#     print(avengers.attack(dc))
