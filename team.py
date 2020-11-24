@@ -8,20 +8,7 @@ class Team:
         self.heroes = list()
 
     def add_hero(self, hero):
-        foundHero = False
-        #loop through each hero in the list self.heroes
-        for hero in self.heroes:
-            # if we find a name in the list that matches the name 
-            # we passed in 
-            if not foundHero:
-                self.heroes.append(hero)
-            else:
-               print(f"There is already a hero with the name {hero.name}")
-                # set the condition to True
-               foundHero = True
-            #if we did not find a hero with the name in the list
-            # return 0
-
+        self.heroes.append(hero)
     def remove_hero(self, name):
         foundHero = False
         #loop through each hero in the list self.heroes
@@ -34,8 +21,8 @@ class Team:
                 foundHero = True
             #if we did not find a hero with the name in the list
             # return 0
-        if not foundHero:
-            return 0
+            if not foundHero:
+                return 0
     def view_all_heroes(self):
         for hero in self.heroes:
             print(f"hero: {hero.name}")
@@ -72,9 +59,17 @@ class Team:
 
 
 if __name__ == "__main__":
+
     avengers = Team("Avengers")
     dc = Team("DC")
 
+    avengers.add_hero("Spider Man")
+    avengers.add_hero("Iron Man")
+
+    dc.add_hero("Scorpion")
+    dc.add_hero("Sub Zero")
+
+    dc.view_all_heroes()
     avengers.living_heroes = ["Iron Man", "Captain America", "Hulk", "Black Panther"]
     dc.living_opponents = ["Scorpion", "Jack", "Athena", "Sub Zero"]
 

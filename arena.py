@@ -6,8 +6,8 @@ from team import Team
 
 class Arena:
     def __init__(self):
-        self.team_one: []
-        self.team_two: [] 
+        self.team_one = None
+        self.team_two = None 
 
     def create_ability(self):
         # Get the ability info from user
@@ -59,14 +59,14 @@ class Arena:
                hero.add_armor(self.create_armor)
                #HINT: First create the armor, then add it to the hero
         return hero
-
     def build_team_one(self):
         # Prompt the user for the number of heroes on team one
         #for every hero the user wants to add, add it to the team
-        numOfTeamMembers = int(input("How many members would you like on Team One?\n"))
+        numOfTeamMembers = int(input("How many members would you like on Team One? "))
         for i in range(numOfTeamMembers):
             hero = self.create_hero()
-            self.team_one.append(hero)
+            team1 = self.team_one
+            team1.add_hero(hero)
 
     def build_team_two(self):
         # Prompt the user for the number of heroes on team one
@@ -74,7 +74,8 @@ class Arena:
         teamMembers2 = int(input("How many heroes would you like to add to team two?\n"))
         for i in range(teamMembers2):
             hero = self.create_hero()
-            self.team_two.append(hero)
+            team2 = self.team_two
+            team2.add_hero(hero)
 
     def team_battle(self):
         self.team_one.attack(self.team_two)

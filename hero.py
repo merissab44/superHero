@@ -32,7 +32,6 @@ class Hero:
             total_damage += ability.attack()
             print(f" the total damage was: {total_damage}")
             return total_damage
-    
     def add_armor(self, armor):
         # adding each armor to the list self.armors
         self.armors.append(armor)
@@ -77,14 +76,14 @@ class Hero:
                 print(f'{self.name} attacked {opponent.name}!')
                 opponent.take_damage(self_dmg)
                 print(f"{opponent.name}'s remaining health: {opponent.current_health}")
-            if not self.is_alive():
+            if self.is_alive() == False:
                 opponent.add_kill(1)
                 self.add_death(1)
-                print(f"{self.name} has been defeated by {opponent.name}")
-            elif not opponent.is_alive():
+                return (f"{self.name} has been defeated by {opponent.name}")
+            elif opponent.is_alive() == False:
                 opponent.add_death(1)
                 self.add_kill(1)
-                print(f"{opponent.name} has been defeated by {self.name}")
+                return (f"{opponent.name} has been defeated by {self.name}")
         else:
             print("Draw!")
         #print(f'{random.choice(hero_choice)} wins!')
